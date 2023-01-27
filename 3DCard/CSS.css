@@ -1,0 +1,40 @@
+$font-stack: 'Raleway', Arial, sans-serif
+$black-color: #141414
+$white-color: white
+@mixin d-flex-c($rc: unset, $jc: center, $ai: center)
+  display: flex
+  flex-direction: $rc
+  justify-content: $jc
+  align-items: $ai
+@mixin size($w, $h: $w)
+  width: $w
+  height: $h
+:root
+  --card-width: 450px
+  --text-translateZ: 50px
+*, *::before, *::after
+  box-sizing: border-box
+body
+  @include d-flex-c(column)
+  font-family: $font-stack
+  color: $white-color
+  background-color: $black-color
+  min-height: 95vh
+  cursor: default
+.container
+  @include d-flex-c(column)
+  flex-wrap: wrap
+  transform-style: preserve-3d
+  perspective: 1000px
+.card
+  @include d-flex-c
+  @include size(var(--card-width), calc(var(--card-width) / 2))
+  background-color: #FFd700
+  transform-style: preserve-3d
+  .content
+    transform-style: preserve-3d
+    text-align: center
+    h1
+      transform: translateZ(calc(var(--text-translateZ) + 20px))
+    p
+      transform: translateZ(var(--text-translateZ))
